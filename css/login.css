@@ -1,0 +1,364 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #e3dac9 0%, #f4f1ea 50%, #dcd3c0 100%);
+    --bg-white: #ffffff;
+    --text-main: #111111;
+    --text-muted: #555555;
+    --accent-black: #000000;
+    --glass-bg-primary: rgba(255, 255, 255, 0.5);
+    --glass-bg-secondary: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+*{
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+}
+
+nav, .fview{
+    animation: pop 1.4s ease-in;
+}
+
+@keyframes pop {
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
+}
+
+nav{
+    position: fixed;
+    background-color: transparent;
+    width: 100%;
+    height: clamp(30px, 10vh, 60px);
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    z-index: 2;
+}
+
+nav h1 {
+    color: var(--text-main);
+}
+nav h1 span{
+    font-size: 30px;
+    color: var(--accent-black);
+}
+
+nav h2{
+    padding: 5px 12px;
+    border-radius: 5px;
+    position: fixed;
+    right: 0;
+    margin-right: 3%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    font-size: clamp(1.5rem, 5vw, .5rem);
+    background: var(--glass-bg-primary);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    transition: background-color 0.2s;
+}
+
+nav h2:hover{
+    cursor: pointer;
+    background-color: #e2e2e2;
+}
+
+nav h2:active{
+    background-color: #cccccc;
+}
+
+nav .logo{
+    margin: 0 0 0 2.5%;
+    height: 75%;
+    width: auto;
+}
+
+.fview{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.fview .word{
+    color: var(--text-main);
+    font-size: clamp(3.5rem, 10vw, 10rem);
+    font-weight: 800;
+}
+
+hr{
+    width: 90%;
+    border: none;
+    height: 1px;
+    background-color: var(--text-main);
+    margin-bottom: 2%;
+}
+
+.fview p{
+    padding: 0 15% 0 15%;
+    font-size: clamp(16px,4vw,1.5rem);
+    text-align: start;
+    color: var(--text-muted);
+}
+
+/* main container natin para sa sign in and sign up */
+.form-container{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: rgba(244, 241, 234, 0.6);
+    z-index: 3;
+    user-select: none;
+    display: none;
+}
+
+/* wrapper for the sign in and sign up forms */
+.signin, .signup{
+    border-radius: 1rem;
+    width: 425px;
+    background: var(--glass-bg-primary);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.signup {
+    height: fit-content;
+    display: none;
+    animation: rotate .7s forwards;
+}
+
+.signin{
+    height: fit-content;
+    animation: rotatel .7s forwards;
+}
+
+@keyframes rotate {
+    0%{
+        transform: translate(-50%,-50%) rotateY(180deg);
+    }
+    100%{
+        transform: translate(-50%,-50%) rotateY(360deg);
+    }
+}
+
+@keyframes rotatel {
+    0%{
+        transform: translate(-50%,-50%) rotateY(180deg);
+    }
+    100%{
+        transform: translate(-50%,-50%) rotateY(0deg);
+    }
+}
+
+.close{
+    padding: 15px;
+    height: 15px;
+    display: flex;
+    border-radius: 100%;
+    float: right;
+    margin: 20px 20px 0 0;
+    transform: scale(1) rotate(0deg);
+    transition: .2s;
+    cursor: pointer;
+}
+
+.close:hover{
+    transform: scale(1.2) rotate(90deg);
+    background-color: #f0f0f0;
+}
+
+.close:active{
+    transform: scale(.95);
+    background-color: #e0e0e0;
+}
+
+form{
+    position: relative;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-main);
+}
+
+form h2{
+    text-align: center;
+    width: 100%;
+    font-size: clamp(30px,10vw,40px);
+    font-weight: 700;
+    margin: 20px;
+}
+
+form .input_login{
+    outline: none;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    height: 50px;
+    width: 80%;
+    margin: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: var(--text-main);
+    font-size: 16px;
+    background: var(--glass-bg-secondary);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+
+    transition: border-color 0.2s;
+}
+
+form .input_login:focus {
+    border-color: var(--accent-black);
+}
+
+form .lbl1, form .lbl2 {
+    position: relative;
+    width: 100%;
+    padding-left: 10%; 
+    top: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+form button{
+    width: 80%;
+    height: 45px;
+    border-radius: 8px;
+    background-color: var(--accent-black);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--bg-white);
+    cursor: pointer;
+    margin: 25px 0 15px 0;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+form button:hover{
+    background-color: #333333;
+}
+
+form button:active{
+    transform: scale(.98);
+}
+
+form p{
+    margin-top: 5%;
+    position: relative;
+    bottom: 20px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+form .toSignup, form .toSignin{
+    margin-left: 5px;
+    font-weight: 700;
+    color: var(--accent-black);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#checkCreate, #checkUsers{
+    display: none;
+    width: 80%;
+    text-align: center;
+    background-color: #fff0f0;
+    border: 1px solid #ffcccc;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #cc0000;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 480px){
+    nav h1{
+        display: none;
+    }
+    .logo{
+        height: 70%;
+        width: auto;
+    }
+
+    .signup, .signin{
+        height: 100vh;
+        width: 100vw;
+        border-radius: 0%;
+    }
+    form{
+        height: fit-content;
+        position: relative;
+        top: 35%;
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width: 2560px) {
+    .signin, .signup{
+        height: 1125px;
+        width: 725px;
+    }
+    form{
+        height: 100%;
+    }
+    form h2{
+        margin-top: -15px;
+        font-size: 100px;
+        margin-bottom: 15px;
+    }
+    form .lbl1, form .lbl2{
+        font-size: 30px;
+    }
+    form .input_login{
+        padding: 25px;
+        font-size: 25px;
+    }
+    form button{
+        height: 90px;
+        font-size: 35px;
+    }
+    form img{
+        height: 75px;
+        padding: 0 15px;
+    }
+    .close{
+        height: 30px;
+    }
+}
+
+
+
