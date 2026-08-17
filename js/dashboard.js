@@ -808,7 +808,7 @@ function conpf(){
     if(data.status == 'success'){
       npf = data.msg;
       // alert(data.msg);
-      let me = `assets/pf${npf}.png`;
+      let me = `assets/profile${npf}.png`;
       document.getElementById("uprofile").src=me;
       document.getElementById("sprofile").src=me;
       loadprofile();
@@ -833,7 +833,7 @@ function loadprofile(){
     usersprofile = data.msg[0].profile;
     let id = "pfCircle"+usersprofile;
     // disabled na yung alert dito
-    let me = `assets/pf${npf}.png`;
+    let me = `assets/profile${npf}.png`;
 
     if(npf == null){
       document.getElementById("uprofile").src='assets/user.png';
